@@ -1,0 +1,15 @@
+
+可以查看哪些端口不让用
+netsh interface ipv4 show excludedportrange protocol=tcp
+
+
+
+docker容器端口不能访问怎么办
+
+在进行全新部署的时候，使用如下命令进行容器的清零。
+
+首先停掉所有的容器
+docker stop $(docker ps -a -q)
+
+然后删除所有的容器
+docker rm $(docker ps -aq)

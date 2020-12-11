@@ -1,0 +1,68 @@
+
+docker pull mysql:5.6
+
+docker volume create mysql_5.6_data
+
+docker run --name mysql5.6 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=admin -d -v mysql_5.6_data:/var/lib/mysql mysql:5.6
+
+docker exec -it mysql5.6 bash
+
+mysql -u root -p
+admin
+
+
+
+
+参考：
+https://www.runoob.com/docker/docker-install-mysql.html
+
+
+docker pull mysql:8.0
+
+docker images
+
+
+查看数据卷列表
+docker volume ls
+
+新建一个数据卷
+docker volume create mysql_8.0_data
+
+查看数据的相关信息
+docker inspect mysql_8.0_data
+
+【指定数据卷】
+docker run --name mysql8.0 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=admin -d -v mysql_8.0_data:/var/lib/mysql mysql:8.0
+
+docker run --name mysql8.0 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=admin -d mysql:8.0
+
+【进入 mysql】
+docker exec -it mysql8.0 bash
+
+mysql -u root -p
+admin
+
+【创建用户可支持 native 客户端连接】
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'admin';
+CREATE USER 'dev_test'@'%' IDENTIFIED WITH mysql_native_password BY 'admin';
+GRANT ALL PRIVILEGES ON *.* TO 'dev_test'@'%';
+
+
+查看最大连接数
+show variables like "max_connections";
+
+从新设置最大连接数
+set GLOBAL max_connections=300;
+
+
+===============================
+解决 【 [Err] 1055 - Expression #1 of ORDER BY clause is not in GROUP BY clause and contains nonaggregated column 'information_schema.PROFILING.SEQ' which is not functionally dependent on columns in GROUP BY clause; this is incompatible with sql_mode=only_full_group_by 】 这个错误；执行下面 sql
+
+SELECT version(), @@sql_mode;SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
+
+
+修改完当前镜像。新打开一个终端，docker ps 查看镜像 id
+然后 docker commit [镜像id] [镜像名字]:latest
+
+
+

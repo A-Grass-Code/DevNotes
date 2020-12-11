@@ -1,0 +1,55 @@
+
+docker pull redis:6.0
+
+docker volume create redis_6.0_data
+
+docker run --name redis6.0 -p 6379:6379 -d -v redis_6.0_data:/var/lib/redis redis:6.0
+
+docker exec -it redis6.0 /bin/bash
+
+redis-cli
+
+set test 111 EX 30
+
+get test
+
+
+
+参考：
+https://www.runoob.com/redis/redis-conf.html
+https://blog.csdn.net/aquester/article/details/90448165
+https://blog.csdn.net/qq_38233650/article/details/89892754
+https://www.cnblogs.com/zhukaijian/p/12879261.html
+
+
+docker pull redis
+
+docker run -itd --name redis -p 6379:6379 redis
+
+docker exec -it redis /bin/bash
+
+redis-cli
+
+
+set test 111 EX 30
+
+get test
+
+
+
+config set appendonly yes
+
+config get appendonly
+
+config set maxmemory 500MB
+
+config get maxmemory
+
+config set maxmemory-samples 10
+
+config get maxmemory-samples
+
+config set maxmemory-policy allkeys-lru
+
+config get maxmemory-policy
+
