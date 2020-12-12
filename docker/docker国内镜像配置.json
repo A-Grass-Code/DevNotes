@@ -9,6 +9,9 @@
 		"https://cr.console.aliyun.com/"
 	],
 	"insecure-registries": [],
-	"debug": true,
-	"experimental": true
+	"debug": false,
+	"experimental": false,
+	"features": {
+		"buildkit": true
+	}
 }

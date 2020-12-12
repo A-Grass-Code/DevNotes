@@ -1,0 +1,38 @@
+
+相关参考
+https://www.cnblogs.com/yaohong/p/9221800.html
+
+
+
+# 查看正在本机正在运行的容器
+docker ps
+
+CONTAINER ID   IMAGE       COMMAND                  CREATED          STATUS          PORTS                    NAMES
+319fde31257d   redis:6.0   "docker-entrypoint.s…"   17 minutes ago   Up 17 minutes   0.0.0.0:6379->6379/tcp   redis6.0
+
+
+# 把容器提交变为镜像
+# docker commit -m "提交说明文字"    -a "作者名"    要提交的容器名    提交后的镜像名:提交后的镜像tag名
+docker commit -m "供开发使用的 Redis 6.0 镜像" -a "Li-Zhyong" redis6.0 redis6.0:dev
+
+
+# 查看本机镜像
+docker images
+REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
+redis6.0     dev       afd44b4339de   9 seconds ago   104MB
+
+
+# 将镜像推送到云端仓库
+
+# 重新定义镜像标签
+# docker tag 镜像id    云端仓库的用户名/云端的仓库名:新定义的镜像tag
+docker tag afd44b4339de izhy998dev/dev_tools:redis6.0-dev
+
+# 把重新定义标签的本地镜像推送到云端仓库
+# docker push    云端仓库的用户名/云端的仓库名:新定义的镜像tag
+docker push izhy998dev/dev_tools:redis6.0-dev
+
+
+
+最后都成功后可以删除掉本机上 把容器提交变为镜像 的那份多余的镜像
+
