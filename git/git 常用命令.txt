@@ -72,7 +72,7 @@ $ git push [origin] [branch]
  git push origin --delete [branch-name]
  git branch -dr [origin/branch]
 
-# 同步远端已经删除的分支（当远端已经删除，当本地依然有时 使用）
+# 同步远端已经删除的分支 （ 当远端已经删除，但本地依然有时 使用 ）
  git remote prune origin
 
 ============================================================================================
