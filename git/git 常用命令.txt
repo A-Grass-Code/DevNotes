@@ -23,7 +23,7 @@
  git clone [远端仓库地址]
 
 #克隆分支
-git clone -b 分支名 地址
+git clone -b [分支名] [地址]
 
 # 查看当前状态
  git status
@@ -69,10 +69,10 @@ $ git push [origin] [branch]
  git branch -d [branch-name]
 
 # 删除远程分支
- git push origin --delete [branch-name]
- git branch -dr [origin/branch]
+1. git push origin --delete [branch-name]  （ 推荐使用 ）
+2. git branch -dr [origin/branch]
 
-# 同步远端已经删除的分支 （ 当远端已经删除，但本地依然有时 使用 ）
+# 同步远端已经删除的分支 （ 当远端已经删除，但本地依然存在时 使用 ）
  git remote prune origin
 
 ============================================================================================
@@ -80,12 +80,12 @@ $ git push [origin] [branch]
 == 同步 ====
 
 # 获取远端新变化，并与本地分支合并
- git pull [branch]
+ git pull [origin] [branch]
 
-# 推从本地分支到远端仓库
- git push [branch]
+# 推送本地分支到远端仓库
+ git push [origin] [branch]
 
-# 重置当前分支到指定的 commit ，同时重置暂存区，但工作区不变
+# 重置当前分支到指定的 commit ，同时重置暂存区，但工作区不变 （ commit 是提交的标识号 ）
  git reset [commit]
 
 
