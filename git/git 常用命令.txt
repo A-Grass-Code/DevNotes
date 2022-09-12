@@ -85,6 +85,9 @@ $ git push [origin] [branch]
 # 推送本地分支到远端仓库
  git push [origin] [branch]
 
+# 强制推送
+ git push -f [origin] [branch]
+
 # 重置当前分支到指定的 commit ，同时重置暂存区，但工作区不变 （ commit 是提交的标识号 ）
  git reset [commit]
 
