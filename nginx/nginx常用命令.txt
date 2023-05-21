@@ -1,0 +1,7 @@
+
+start nginx
+
+
+nginx -s stop
+./nginx -s stop		【备用】
+
