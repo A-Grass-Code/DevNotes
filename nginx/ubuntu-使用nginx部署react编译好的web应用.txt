@@ -1,0 +1,50 @@
+
+1.	安装 nginx
+
+sudo apt update
+sudo apt install nginx
+
+
+
+2.	一旦安装完成，Nginx 将会自动被启动。你可以运行下面的命令来验证它：
+
+sudo systemctl status nginx
+
+输出类似下面这样：
+
+● nginx.service - A high performance web server and a reverse proxy server
+     Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
+     Active: active (running) since Sat 2020-05-02 20:25:43 UTC; 13s ago
+...
+
+
+
+3.	配置 nginx 路径
+
+找到 /etc/nginx/sites-available/default 文件
+
+更改 root 配置； 默认值：  root /var/www/html;
+
+更改为以下值：
+root /var/www/web/build;
+
+其中 build 目录就是 react 编译好的目录
+
+
+### 重要的配置，解决单页面路由的问题
+
+location / {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+		try_files $uri $uri/ /index.html;
+}
+
+
+
+4.	重启 nginx
+
+cd /etc/nginx
+
+先停止	nginx -s stop
+再重启	nginx
+
