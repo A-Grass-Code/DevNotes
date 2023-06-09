@@ -24,6 +24,7 @@ sudo systemctl status nginx
 找到 /etc/nginx/sites-available/default 文件
 
 更改 root 配置； 默认值：  root /var/www/html;
+root 要放在配置中的 server 节点下
 
 更改为以下值：
 root /var/www/web/build;
