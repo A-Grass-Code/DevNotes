@@ -38,6 +38,9 @@ http {
 
     gzip  on;
 	
+	# 客户端最大上传大小 100MB
+	client_max_body_size	100m;
+	
 	
 
 	# 显示目录
@@ -66,6 +69,22 @@ http {
 	}
 	
 	
+	server {
+		listen       80;
+        server_name  www.izhyong.cn izhyong.cn;
+		location / {
+			proxy_pass http://localhost:8111/;
+        }
+	}
+	
+	server {
+		listen       80;
+        server_name  www.zzdrz.cn zzdrz.cn;
+		location / {
+			proxy_pass http://localhost:8112/;
+        }
+	}
+
 
 
     # server {
@@ -117,37 +136,37 @@ http {
 
     # another virtual host using mix of IP-, name-, and port-based configuration
     #
-    #server {
-    #    listen       8000;
-    #    listen       somename8080;
-    #    server_name  somename  alias  another.alias;
-
-    #    location  {
-    #        root   html;
-    #        index  index.html index.htm;
-    #    }
-    #}
+    # server {
+    #     listen       8000;
+    #     listen       somename8080;
+    #     server_name  somename  alias  another.alias;
+	
+    #     location  {
+    #         root   html;
+    #         index  index.html index.htm;
+    #     }
+    # }
 
 
     # HTTPS server
     #
-    #server {
-    #    listen       443 ssl;
-    #    server_name  localhost;
-
-    #    ssl_certificate      cert.pem;
-    #    ssl_certificate_key  cert.key;
-
-    #    ssl_session_cache    sharedSSL1m;
-    #    ssl_session_timeout  5m;
-
-    #    ssl_ciphers  HIGH!aNULL!MD5;
-    #    ssl_prefer_server_ciphers  on;
-
-    #    location  {
-    #        root   html;
-    #        index  index.html index.htm;
-    #    }
-    #}
+    # server {
+    #     listen       443 ssl;
+    #     server_name  localhost;
+	
+    #     ssl_certificate      cert.pem;
+    #     ssl_certificate_key  cert.key;
+	
+    #     ssl_session_cache    sharedSSL1m;
+    #     ssl_session_timeout  5m;
+	
+    #     ssl_ciphers  HIGH!aNULL!MD5;
+    #     ssl_prefer_server_ciphers  on;
+	
+    #     location  {
+    #         root   html;
+    #         index  index.html index.htm;
+    #     }
+    # }
 
 }
