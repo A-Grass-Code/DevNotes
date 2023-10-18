@@ -54,7 +54,7 @@ http {
 	server {
 		listen       80;
         server_name  localhost;
-		location  {
+		location / {
             root   html;
             index  index.html index.htm;
         }
@@ -95,7 +95,7 @@ http {
 	#     
     #     #access_log  logshost.access.log  main;
 	#     
-    #     location  {
+    #     location / {
     #         root   html;
     #         index  index.html index.htm;
     #     }
@@ -141,7 +141,7 @@ http {
     #     listen       somename8080;
     #     server_name  somename  alias  another.alias;
 	
-    #     location  {
+    #     location / {
     #         root   html;
     #         index  index.html index.htm;
     #     }
@@ -163,7 +163,7 @@ http {
     #     ssl_ciphers  HIGH!aNULL!MD5;
     #     ssl_prefer_server_ciphers  on;
 	
-    #     location  {
+    #     location / {
     #         root   html;
     #         index  index.html index.htm;
     #     }
